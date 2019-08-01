@@ -1,2 +1,2 @@
-# myrepos
+# myrepository
 ke pengqi

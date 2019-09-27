@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- SQL XML created by WWW SQL Designer, https://github.com/ondras/wwwsqldesigner/ -->
+<!-- Active URL: https://ondras.zarovi.cz/sql/demo/?keyword=default -->
+<sql>
+<datatypes db="pgsql">
+	<group color="rgb(138,138,270)" label="More Usual">
+		<type label="Serial" quote="" sql="serial" length="0" re="seriali4"/>
+		<type label="Big Integer" quote="" sql="bigint" length="0" re="int8"/>
+		<type label="Text" quote="'" sql="text" length="0"/>
+	</group>
+	<group color="rgb(238,238,170)" label="Numeric">
+		<type label="Big Serial" quote="" sql="bigserial" length="0" re="serial8"/>
+		<type label="Small Integer" quote="" sql="smallint" length="0" re="int2"/>
+		<type label="Integer" quote="" sql="integer" length="0" re="int4"/>
+		<type label="Numeric" quote="" sql="numeric" length="1" re="decimal"/>
+		<type label="Real" quote="" sql="real" length="0" re="float4"/>
+		<type label="Double Precision" quote="" sql="double precision" length="0" re="float8"/>
+	</group>
+
+	<group color="rgb(255,200,200)" label="Character">
+		<type label="Character" quote="'" sql="character" length="1" re="char"/>
+		<type label="Character Varying" quote="'" sql="character varying" length="1" re="varchar"/>
+		<type label="XML" quote="'" sql="xml" length="0"/>
+	</group>
+	
+	<group color="rgb(200,255,200)" label="Date &amp; Time">
+		<type label="Timestamp" quote="'" sql="timestamp" length="0"/>
+		<type label="Timestamp With Timezone" quote="'" sql="timestamp with timezone" length="0" re="timestamptz"/>
+		<type label="Interval" quote="'" sql="interval" length="0"/>
+		<type label="Date" quote="'" sql="date" length="0"/>
+		<type label="Time" quote="'" sql="time" length="0"/>
+		<type label="Time With Timezone" quote="'" sql="time with timezone" length="0" re="timetz"/>
+	</group>
+        
+	<!-- 
+	<group label="Geometric" color="rgb(100,155,100)">
+	FIXME 
+	</group>
+        -->
+
+        <!--
+        <group label="Network Address" color="rgb(100,155,100)">
+        FIXME
+        </group>
+        -->
+
+        <!--
+        <group label="Bit String" color="rgb(100,155,100)">
+        FIXME
+        </group>
+        -->
+
+        <!--
+        <group label="Text Search" color="rgb(100,155,100)">
+        FIXME
+        </group>
+        -->
+
+        <!--
+        <group label="Arrays" color="rgb(100,155,100)">
+        FIXME
+        </group>a
+        -->
+
+	<group color="rgb(200,200,255)" label="Miscellaneous">
+		<type label="Binary" quote="'" sql="bytea" length="0"/>
+		<type label="Boolean" quote="'" sql="boolean" length="0" re="boll"/>
+		<type label="UUID" quote="'" sql="uuid" length="0"/>
+		<type label="Enum" quote="'" sql="enum" length="1"/>
+		<type label="Money" quote="" sql="money" length="1"/>
+	</group>
+</datatypes><table x="1155" y="306" name="Slot">
+<row name="id" null="1" autoincrement="1">
+<datatype>integer</datatype>
+<default>NULL</default></row>
+<row name="location_id" null="1" autoincrement="0">
+<datatype>integer</datatype>
+<default>NULL</default><relation table="Location" row="id" />
+</row>
+<row name="lecturer_sam_account_name" null="1" autoincrement="0">
+<datatype>character varying</datatype>
+<default>NULL</default></row>
+<row name="datetime" null="1" autoincrement="0">
+<datatype>timestamp</datatype>
+<default>NULL</default></row>
+<row name="status" null="1" autoincrement="0">
+<datatype>character varying</datatype>
+<default>NULL</default></row>
+<key type="PRIMARY" name="">
+<part>id</part>
+</key>
+</table>
+<table x="1507" y="479" name="Location">
+<row name="id" null="1" autoincrement="1">
+<datatype>integer</datatype>
+<default>NULL</default></row>
+<row name="venue" null="1" autoincrement="0">
+<datatype>character varying</datatype>
+<default>NULL</default></row>
+<row name="room_code" null="1" autoincrement="0">
+<datatype>character varying</datatype>
+<default>NULL</default></row>
+<key type="PRIMARY" name="">
+<part>id</part>
+</key>
+</table>
+<table x="772" y="175" name="Booking">
+<row name="id" null="1" autoincrement="1">
+<datatype>integer</datatype>
+<default>NULL</default></row>
+<row name="slot_id" null="1" autoincrement="0">
+<datatype>integer</datatype>
+<default>NULL</default><relation table="Slot" row="id" />
+</row>
+<row name="student_sam_account_name" null="1" autoincrement="0">
+<datatype>character varying</datatype>
+<default>NULL</default></row>
+<row name="consultation_with" null="1" autoincrement="0">
+<datatype>character varying</datatype>
+<default>NULL</default></row>
+<row name="reason" null="1" autoincrement="0">
+<datatype>character varying</datatype>
+<default>NULL</default></row>
+<row name="additional_note" null="1" autoincrement="0">
+<datatype>character varying</datatype>
+<default>NULL</default></row>
+<row name="booking_datetime" null="1" autoincrement="0">
+<datatype>timestamp</datatype>
+<default>NULL</default></row>
+<row name="status" null="1" autoincrement="0">
+<datatype>character varying</datatype>
+<default>NULL</default></row>
+<row name="remark" null="1" autoincrement="0">
+<datatype>character varying</datatype>
+<default>NULL</default></row>
+<row name="synced_to_gims" null="1" autoincrement="0">
+<datatype>boolean</datatype>
+<default>NULL</default></row>
+<key type="PRIMARY" name="">
+<part>id</part>
+</key>
+</table>
+<table x="797" y="680" name="ArchivedBooking">
+<row name="id" null="1" autoincrement="1">
+<datatype>integer</datatype>
+<default>NULL</default></row>
+<row name="archived_slot_id" null="1" autoincrement="0">
+<datatype>integer</datatype>
+<default>NULL</default><relation table="ArchivedSlot" row="id" />
+</row>
+<row name="student_sam_account_name" null="1" autoincrement="0">
+<datatype>character varying</datatype>
+<default>NULL</default></row>
+<row name="consultation_with" null="1" autoincrement="0">
+<datatype>character varying</datatype>
+<default>NULL</default></row>
+<row name="reason" null="1" autoincrement="0">
+<datatype>character varying</datatype>
+<default>NULL</default></row>
+<row name="additional_date" null="1" autoincrement="0">
+<datatype>character varying</datatype>
+<default>NULL</default></row>
+<row name="booking_datetime" null="1" autoincrement="0">
+<datatype>timestamp</datatype>
+<default>NULL</default></row>
+<row name="status" null="1" autoincrement="0">
+<datatype>character varying</datatype>
+<default>NULL</default></row>
+<row name="remark" null="1" autoincrement="0">
+<datatype>character varying</datatype>
+<default>NULL</default></row>
+<row name="synced_to_gims" null="1" autoincrement="0">
+<datatype>boolean</datatype>
+<default>NULL</default></row>
+<key type="PRIMARY" name="">
+<part>id</part>
+</key>
+</table>
+<table x="1137" y="575" name="ArchivedSlot">
+<row name="id" null="1" autoincrement="1">
+<datatype>integer</datatype>
+<default>NULL</default></row>
+<row name="location_id" null="1" autoincrement="0">
+<datatype>integer</datatype>
+<default>NULL</default><relation table="Location" row="id" />
+</row>
+<row name="lecturer_sam_account_name" null="1" autoincrement="0">
+<datatype>character varying</datatype>
+<default>NULL</default></row>
+<row name="datetime" null="1" autoincrement="0">
+<datatype>timestamp</datatype>
+<default>NULL</default></row>
+<row name="status" null="1" autoincrement="0">
+<datatype>character varying</datatype>
+<default>NULL</default></row>
+<key type="PRIMARY" name="">
+<part>id</part>
+</key>
+</table>
+<table x="1527" y="218" name="SlotConfig">
+<row name="id" null="1" autoincrement="1">
+<datatype>integer</datatype>
+<default>NULL</default></row>
+<row name="slot_duration" null="1" autoincrement="0">
+<datatype>character varying</datatype>
+<default>NULL</default></row>
+<row name="slot_cancel_time_limit" null="1" autoincrement="0">
+<datatype>character varying</datatype>
+<default>NULL</default></row>
+<row name="slot_add_time_limit" null="1" autoincrement="0">
+<datatype>character varying</datatype>
+<default>NULL</default></row>
+<key type="PRIMARY" name="">
+<part>id</part>
+</key>
+</table>
+<table x="1905" y="362" name="ACL">
+<row name="sam_account_name" null="1" autoincrement="0">
+<datatype>character varying</datatype>
+<default>NULL</default></row>
+<row name="rsource" null="1" autoincrement="0">
+<datatype>character varying</datatype>
+<default>NULL</default></row>
+<key type="PRIMARY" name="">
+</key>
+</table>
+</sql>
